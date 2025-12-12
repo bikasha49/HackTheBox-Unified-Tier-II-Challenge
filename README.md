@@ -75,6 +75,24 @@ To secure this environment, the following actions are recommended:
 1.  **Patching:** Upgrade Unifi Network Application to version 6.5.55 or later immediately.
 2.  **Configuration:** Apply the `log4j2.formatMsgNoLookups=true` mitigation to the JVM.
 3.  **Network Segmentation:** Block outbound connections from the Unifi server to prevent external LDAP/JNDI lookups.
+---
+
+### 📂 Evidence Gallery (Click to Expand)
+<details>
+  <summary>📸 Click here to view all project screenshots</summary>
+
+  <br>
+
+  **Network Configuration:**
+  <img src="screenshot34.png" width="800">
+
+  **Splunk Settings:**
+  <img src="screenshot35.png" width="800">
+
+  **Another View:**
+  <img src="screenshot36.png" width="800">
+  
+</details>
 
 ---
 <div align="center">
