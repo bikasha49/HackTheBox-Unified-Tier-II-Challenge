@@ -67,7 +67,6 @@ Internal enumeration revealed a **MongoDB** instance running on localhost (port 
 
 **📸 Evidence #8: Root Flag Capture 🚩**
 <br><img src="34%20root%20flag%20.png" alt="Root Flag Capture" width="800"/>
-
 ---
 
 ## 🛡️ Remediation Strategy
@@ -77,24 +76,6 @@ To secure this environment, the following actions are recommended:
 3.  **Network Segmentation:** Block outbound connections from the Unifi server to prevent external LDAP/JNDI lookups.
 ---
 
-### 📂 Evidence Gallery (Click to Expand)
-<details>
-  <summary>📸 Click here to view all project screenshots</summary>
-
-  <br>
-
-  **Network Configuration:**
-  <img src="screenshot34.png" width="800">
-
-  **Splunk Settings:**
-  <img src="screenshot35.png" width="800">
-
-  **Another View:**
-  <img src="screenshot36.png" width="800">
-  
-</details>
-
----
 <div align="center">
   <b>Project Execution by <a href="https://www.linkedin.com/in/bikasha-gurung-082290288">Bikasha Gurung</a> | Cybersecurity Analyst</b>
   <br>
