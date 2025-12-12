@@ -1,11 +1,12 @@
 # 🛡️ Vulnerability Assessment: Unified (Log4j CVE-2021-44228)
 
-| **Target System** | Unified (HackTheBox) |
+| Category | Details |
 | :--- | :--- |
-| **Vulnerability** | **Log4j (CVE-2021-44228)** |
-| **Impact Level** | 🔴 Critical (Remote Code Execution) |
-| **Tools Used** | **Wireshark, TCPDump**, Burp Suite, Rogue-JNDI, MongoDB |
-| **Status** | ✅ Root Access Obtained |
+| **🎯 Target System** | **Unified (HackTheBox)** |
+| **💀 Vulnerability** | ![Log4j](https://img.shields.io/badge/Log4j-CVE--2021--44228-FF0000?style=flat-square&logo=apache&logoColor=white) |
+| **💥 Impact** | 🔴 **Critical** (Remote Code Execution) |
+| **🛠️ Tools Used** | `Nmap` `Wireshark` `TCPDump` `Burp Suite` `Rogue-JNDI` `MongoDB` |
+| **🏆 Status** | ✅ **Root Access Obtained** |
 
 ---
 
