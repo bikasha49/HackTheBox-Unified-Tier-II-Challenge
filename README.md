@@ -77,7 +77,7 @@ To secure this environment, the following actions are recommended:
 ---
 
 <div align="center">
-  <b>Project Execution by <a href="https://www.linkedin.com/in/bikasha-gurung-082290288">Bikasha Gurung</a> | Cybersecurity Analyst</b>
+  <b>Project Execution by <a href="https://www.linkedin.com/in/bikasha-gurung">Bikasha Gurung</a> | Cybersecurity Analyst</b>
   <br>
   <i>Open for SOC Analyst & Blue Team Opportunities</i>
 </div>
